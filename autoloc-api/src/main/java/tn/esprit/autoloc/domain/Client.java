@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -33,4 +34,11 @@ public class Client {
     private String numPermis;
 
     private LocalDate dateInscription;
+
+    @OneToMany(
+            mappedBy = "client",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.REMOVE
+    )
+    private List<Reservation> reservations;
 }

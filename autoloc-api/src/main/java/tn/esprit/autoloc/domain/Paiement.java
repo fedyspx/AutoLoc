@@ -26,4 +26,7 @@ public class Paiement {
 
     @Column(nullable = false, length = 30)
     private String modePaiement;
+
+    @ManyToOne
+    private Contrat contrat;
 }

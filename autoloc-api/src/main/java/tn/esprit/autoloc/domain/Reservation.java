@@ -25,4 +25,15 @@ public class Reservation {
 
     @Column(nullable = false, length = 30)
     private String statut;
+
+    @ManyToOne
+    private Vehicule vehicule;
+
+    @ManyToOne
+    private Client client;
+
+    // Relation Reservation - Contrat
+    // La clé étrangère sera créée dans la table reservation
+    @OneToOne
+    private Contrat contrat;
 }

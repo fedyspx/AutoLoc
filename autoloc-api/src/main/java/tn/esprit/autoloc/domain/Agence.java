@@ -3,6 +3,8 @@ package tn.esprit.autoloc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "agence")
 @Getter
@@ -26,4 +28,17 @@ public class Agence {
 
     @Column(length = 20)
     private String telephone;
+
+    @OneToMany(
+            mappedBy = "agence",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.PERSIST
+    )
+    private List<Vehicule> vehicules;
+
+    @OneToMany(
+            mappedBy = "agence",
+            fetch = FetchType.EAGER
+    )
+    private List<Employe> employes;
 }
