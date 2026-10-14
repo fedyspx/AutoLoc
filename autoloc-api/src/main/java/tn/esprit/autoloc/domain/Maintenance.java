@@ -15,16 +15,13 @@ public class Maintenance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMaintenance;
 
-    @Column(nullable = false)
     private LocalDate dateDebut;
 
     private LocalDate dateFin;
 
-    @Column(length = 500)
     private String description;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Vehicule vehicule;
 }

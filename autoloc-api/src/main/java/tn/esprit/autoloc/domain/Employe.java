@@ -13,18 +13,13 @@ public class Employe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEmploye;
 
-    @Column(nullable = false, length = 100)
     private String nom;
 
-    @Column(nullable = false, length = 100)
     private String prenom;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private RoleEmploye role;
-
-    @ManyToOne
+    private String role;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Agence agence;
 }

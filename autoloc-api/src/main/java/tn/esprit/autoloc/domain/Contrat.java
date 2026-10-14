@@ -17,25 +17,19 @@ public class Contrat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idContrat;
 
-    @Column(nullable = false)
     private LocalDate dateSignature;
 
-    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal montantTotal;
 
-    @Column(nullable = false)
     private boolean valide;
-
     @OneToMany(
             mappedBy = "contrat",
-            fetch = FetchType.EAGER
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
     )
     private List<Paiement> paiements;
-
-    // Côté inverse de la relation Reservation - Contrat
-    // La clé étrangère reste dans reservation
     @OneToOne(mappedBy = "contrat")
     private Reservation reservation;
 }

@@ -16,17 +16,13 @@ public class Paiement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idPaiement;
 
-    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal montant;
 
-    @Column(nullable = false)
     private LocalDate datePaiement;
 
-    @Column(nullable = false, length = 30)
     private String modePaiement;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Contrat contrat;
 }

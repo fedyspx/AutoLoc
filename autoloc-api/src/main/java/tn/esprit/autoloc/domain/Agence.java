@@ -2,7 +2,6 @@ package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
 
 @Entity
@@ -15,30 +14,25 @@ public class Agence {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idAgence;
 
-    @Column(nullable = false, length = 100)
     private String nom;
 
-    @Column(nullable = false, length = 100)
     private String ville;
 
-    @Column(length = 255)
     private String adresse;
 
-    @Column(length = 20)
     private String telephone;
 
     @OneToMany(
             mappedBy = "agence",
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.PERSIST
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.EAGER
     )
     private List<Vehicule> vehicules;
-
     @OneToMany(
             mappedBy = "agence",
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     private List<Employe> employes;
 }

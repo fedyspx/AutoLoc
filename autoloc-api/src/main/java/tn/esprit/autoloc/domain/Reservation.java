@@ -15,25 +15,18 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idReservation;
 
-    @Column(nullable = false)
     private LocalDate dateDebut;
 
-    @Column(nullable = false)
     private LocalDate dateFin;
 
-    @Column(nullable = false, length = 30)
     private String statut;
 
     @ManyToOne
     private Vehicule vehicule;
-
     @ManyToOne
     private Client client;
-
-    // Relation Reservation - Contrat
-    // La clé étrangère sera créée dans la table reservation
     @OneToOne
     private Contrat contrat;
 }

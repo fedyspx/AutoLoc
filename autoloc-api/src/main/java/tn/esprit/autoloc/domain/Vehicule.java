@@ -2,10 +2,8 @@ package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
+import java.math.*;
 import java.util.List;
-
 @Entity
 @Table(name = "vehicule")
 @Getter
@@ -47,10 +45,6 @@ public class Vehicule {
             cascade = CascadeType.REMOVE
     )
     private List<Reservation> reservations;
-
-    @OneToMany(mappedBy = "vehicule")
-    private List<Maintenance> maintenances;
-
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Equipement> equipements;
 }
